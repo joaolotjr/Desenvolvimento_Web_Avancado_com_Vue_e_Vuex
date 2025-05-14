@@ -83,6 +83,7 @@ Como ficou o visual do código acima
 <div align="center">
 <img src="Aulas\1_Iniciando_com_VueJS/Arquivos/Imagem_do_codigo.png" alt="Iamgem do Front do codigo do README" width="400" style="border:2px solid #000; border-radius:8px;">
 </div>
+
 ---
 
 ## Sobre o Instrutor

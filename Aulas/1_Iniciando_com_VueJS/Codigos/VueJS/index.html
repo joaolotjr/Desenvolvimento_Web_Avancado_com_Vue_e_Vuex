@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+<body>    
+    <div id="app">
+    {{ mensagem }} <br>
+    Valor total : {{valorTotal}}<br>
+    Logado: {{logado}}<br>
+    Hobbies: {{hobbies[3]}}<br>
+    Perfil: {{perfil.site}}, {{perfil.cursos[0].nome}}
+    </div>
+    <script>
+        let options = {
+            
+        }
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                mensagem: 'Primeiro tempalte controlado pelo Vue',
+                valorTotal: 150.47,
+                logado: false,
+                hobbies: [
+                    'Dormir',
+                    'Colecionar vídeo games antigos',
+                    'Correr',
+                    'Trilhas'
+                ],
+                perfil: {
+                    nome: 'Jorge Sant Ana',
+                    site: 'jorgesantana.net.br',
+                    idade: 32,
+                    cursos: [
+                        {
+                            nome: 'Laravel',
+                            caragaHoraria: '50 Horas'
+                        },
+                        {
+                            nome: 'Banco de daos Relacionais',
+                            caragaHoraria: '40 Horas'
+                        }
+
+                    ]
+                }
+            }
+        })
+        //console.log(vm)
+    </script>
+</body>
+</html>
