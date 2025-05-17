@@ -18,10 +18,9 @@
 </head>
 <body>    
     <div id="app">
-        {{ 2+2 }}
-        <input :value="2 + 2" :class="teste ? 'verde' : estilo">
-        
-    
+        <input type="text " v-on:keyup="imprimirTexto">
+        <button v-on:click="mensagemAlerta()">Botão</button>
+            
     </div>
     <script>
         let options = {
@@ -30,11 +29,16 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                mensagem: `Expressao`,
-                estilo: 'azul',
-                teste: true
+
             },
-            methods:{}
+            methods:{
+                imprimirTexto (){
+                    console.log(`teste`)
+                },
+                mensagemAlerta(){
+                    alert('Mensagem de Alerta')
+                }
+            }
         })
         //console.log(vm)
     </script>
