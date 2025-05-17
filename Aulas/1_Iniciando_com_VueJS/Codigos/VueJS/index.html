@@ -8,21 +8,20 @@
     <title>Document</title>
     <style>
         .verde{
-            color: green
+            background-color: green;
         }
 
-        .negrito{
-            font-weight: bold;
+        .azul{
+            background-color: blue;
         }
     </style>
 </head>
 <body>    
     <div id="app">
+        {{ 2+2 }}
+        <input :value="2 + 2" :class="teste ? 'verde' : estilo">
         
-    <a href="www.google.com.br" :href="site" >Site</a>
-    <p :class="negrito">Enetndendo a diretiva v-bind</p>
-    <input type="text" :placeholder="instrucaoDePreenchimento" :value="valor">
-    <input type="checkbox" :checked="check">  
+    
     </div>
     <script>
         let options = {
@@ -31,11 +30,9 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                site: 'https://jorgesantana.net.br',
-                cor: `verde`,
-                instrucaoDePreenchimento: 'Placeholder - Diretivca v-bind',
-                valor:'Entendendo - Diretivca v-bind',
-                check: true
+                mensagem: `Expressao`,
+                estilo: 'azul',
+                teste: true
             },
             methods:{}
         })
