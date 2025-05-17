@@ -9,11 +9,10 @@
 </head>
 <body>    
     <div id="app">
-    {{ mensagem }} <br>
-    Valor total : {{valorTotal}}<br>
-    Logado: {{logado}}<br>
-    Hobbies: {{hobbies[3]}}<br>
-    Perfil: {{perfil.site}}, {{perfil.cursos[0].nome}}
+    <a>Site</a>
+    <p>Enetndendo a diretiva v-bine</p>
+    <input type="text">
+    <input type="checkbox">  
     </div>
     <script>
         let options = {
@@ -46,7 +45,23 @@
                         }
 
                     ]
-                }
+                },
+                n1: 10,
+                n2: 5
+            },
+            methods: {
+                somar: function somar() { 
+                    return this.n1 + this.n2;
+                },
+                subtrair: function(){
+                    return this.n1-this.n2;
+                },
+                multiplicar: ()=> {
+                    return this.n1*this.n2;
+                },
+                dividir(){
+                    return this.n1/this.n2;
+                },                
             }
         })
         //console.log(vm)
