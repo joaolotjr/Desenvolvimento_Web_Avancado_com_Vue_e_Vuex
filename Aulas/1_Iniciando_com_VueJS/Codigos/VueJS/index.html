@@ -11,15 +11,46 @@
             background-color: green;
         }
 
+        .branco{
+            background-color: white;
+        }
+
         .azul{
             background-color: blue;
+        }
+        .vermelho{
+            background-color: red;
+        }
+
+        .borda {
+            border: 1px solid;
+        }
+
+        .div-principal {
+            width: 200px;
+            height: 200px;
+        }
+
+        .div-comum {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
         }
     </style>
 </head>
 <body>    
     <div id="app">
-        <input type="text " v-on:keyup="imprimirTexto('Enviando Parametro', 5)">
-        <button v-on:click="mensagemAlerta($event, 'texto', 100)">Botão</button>
+        <div class="borda div-principal" :class="cor">
+            Cor: {{ cor}}
+            <br>
+            Posição X do Mouse: {{posicaoX}}
+            Posição Y do Mouse: {{posicaoY}}
+
+        </div>
+        <hr>
+        <div @click="mudarCor('verde')" class="borda div-comum"></div>
+        <div class="borda div-comum" @mouseover="mudarCor('azul')" @mouseout="mudarCor('vermelho')"></div>
+        <div class="borda div-comum" @mousemove="coordenadas($event)"></div>
             
     </div>
     <script>
@@ -29,21 +60,21 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                xyz: true
-
+                cor: 'branco',
+                posicaoX: 0,
+                posicaoY: 0
             },
             methods:{
-                imprimirTexto (texto, numero){
-                    console.log(texto)
-                    console.log(numero)
-                    console.log(this.xyz)
+                mudarCor(c){
+                    this.cor = c 
                 },
-                mensagemAlerta(event, p1, p2){
-                    console.log(event, p1, p2)
+                coordenadas(e) {
+                    this.posicaoX = e.clientX
+                    this.posicaoY = e.clientY
+                    console.log(e.clientX, e.clientY)
                 }
             }
-        })
-        //console.log(vm)
+        })        
     </script>
 </body>
 </html>
