@@ -19,7 +19,7 @@
 <body>    
     <div id="app">
         <input type="text " v-on:keyup="imprimirTexto('Enviando Parametro', 5)">
-        <button v-on:click="mensagemAlerta()">Botão</button>
+        <button v-on:click="mensagemAlerta($event, 'texto', 100)">Botão</button>
             
     </div>
     <script>
@@ -38,8 +38,8 @@
                     console.log(numero)
                     console.log(this.xyz)
                 },
-                mensagemAlerta(){
-                    alert('Mensagem de Alerta')
+                mensagemAlerta(event, p1, p2){
+                    console.log(event, p1, p2)
                 }
             }
         })
