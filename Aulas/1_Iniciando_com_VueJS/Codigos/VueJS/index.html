@@ -5,18 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vue.js"></script>
-    <title>Document</title>
-    <style>        
-    </style>
+    <title>Document</title>    
 </head>
 <body>    
-    <div id="app"> 
-        
+    <div id="app">         
        
         <ul>
             <li v-for="(curso, chave) in cursos" v-text="chave +' - '+ curso"></li>
         </ul>
-           
+        <hr>
+        <table border="1">
+            <thead>
+                <tr>
+                    <tr>ID</tr>
+                    <tr>Título</tr>
+                    <tr>Descricao</tr>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="({titulo, descricao}, chave) in cursos2">
+                    <td>{{chave}}</td>
+                    <td>{{titulo}}</td>
+                    <td>{{descricao}}</td>
+                </tr>
+
+            </tbody>
+        </table>           
 
     </div>
     <script>
@@ -26,7 +40,17 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                cursos: ['curso 1','curso 2','curso 3','curso 4','curso 5',]
+                cursos: ['curso 1','curso 2','curso 3','curso 4','curso 5'],
+                cursos2: {
+                    1000:{
+                        titulo: 'Laravel',
+                        descricao: 'domine o framework mais poderoso de php do mundo'
+                    },
+                    1001: {
+                        titulo: 'Banco de dados',
+                        descricao: 'domine os maiores banco de daos do mercado'
+                    }
+                }
             },
             methods:{}
         })        
