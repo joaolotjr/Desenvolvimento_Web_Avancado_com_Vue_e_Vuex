@@ -10,24 +10,12 @@
     </style>
 </head>
 <body>    
-    <div id="app">    
-        <button @click="exibirSaldo =! exibirSaldo">
-            <span v-if="!exibirSaldo">Exibir Saldo</span>
-            <span v-if="exibirSaldo">Ocultar Saldo</span>
-        </button>   
-        <p>Saldo: <span v-if="exibirSaldo"> R$ {{ saldo }}</span></p> 
-        <hr>
-
-        Idade: <input type="text" id="inputIdade" @blur="setIdade()">
-        <P v-if="idade < 18">Menor de idade <a><span></span></a></P>
-        <P v-else>Maior de idade</P>
-
-        Nota: <input type="text" id="inputNota" @blur="setNota()">
-        <p v-if="nota == ''">Digite a Nota do aluno</p>
-        <p v-else-if="nota >=7 && nota<=10">Nota {{nota}}, aluno aprovado</p>
-        <p v-else-if="nota >=5 && nota<=7">Nota {{nota}}, aluno em recuperaçao</p>
-        <p v-else-if="nota >=0 && nota<=5">Nota {{nota}}, aluno reprovado</p>
-        <p v-else>Nota invalida</p>
+    <div id="app"> 
+        <p @mouseover="exibirTextoAjuda = true" @mouseout="exibirTextoAjuda = false">Exemplo tooltip</p>
+        <div v-show="exibirTextoAjuda">
+            <h3>Título texto ajuda</h3>
+            <p>Conteudo texto ajuda</p>
+        </div>
 
     </div>
     <script>
@@ -37,21 +25,9 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                saldo: 4570.17,
-                exibirSaldo: false,
-                idade: 0,
-                nota: 0
+                exibirTextoAjuda: false
             },
-            methods:{
-                setIdade(){
-                    this.idade = inputIdade.value
-                    console.log(this.nota)
-                },
-                setNota(){
-                    this.nota = inputNota.value
-                    console.log(this.nota)
-                }
-            }
+            methods:{}
         })        
     </script>
 </body>
