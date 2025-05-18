@@ -30,7 +30,20 @@
                 </tr>
 
             </tbody>
-        </table>           
+        </table>   
+        <hr>
+        <ul>
+            <li v-for="p in publicacoes" style="border: solid 1px; margin-bottom:  10px" :key="p.id">
+                <div>
+                    {{p.publicacao}}
+                    <hr>
+                    <input type="text">
+                </div>
+            </li>
+        </ul>
+        <button @click="misturarArray()">Misturar publicacoes</button>
+
+
 
     </div>
     <script>
@@ -50,9 +63,24 @@
                         titulo: 'Banco de dados',
                         descricao: 'domine os maiores banco de daos do mercado'
                     }
-                }
+                },
+                publicacoes:[
+                    { id: 1, publicacao: 'Publicacao 1'},
+                    { id: 2, publicacao: 'Publicacao 2'},
+                    { id: 3, publicacao: 'Publicacao 3'}
+                ]
             },
-            methods:{}
+            methods:{
+                misturarArray(){
+                    let misturado = []
+
+                    misturado[0]= this.publicacoes[2]
+                    misturado[1]= this.publicacoes[0]
+                    misturado[2]= this.publicacoes[1]
+
+                    this.publicacoes = misturado
+                }
+            }
         })        
     </script>
 </body>
