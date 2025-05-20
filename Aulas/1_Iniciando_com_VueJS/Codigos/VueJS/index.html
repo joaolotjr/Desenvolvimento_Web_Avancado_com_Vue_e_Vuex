@@ -8,25 +8,10 @@
     <title>Document</title>    
 </head>
 <body>    
-    <div id="app">     
-        <h4>Adicionar pacientes</h4> 
-        <span>Nome:</span><input type="text" id="inputNome"><br>
-        <span>Idade:</span><input type="text" id="inputIdade"><br>
-        <span>Plano:</span><input type="text" id="inputPlano"><br>
-        <button @click="adiconarPaciente()">Adiconar</button>
-        <hr>
-        <h4>Ultimo paciente cadastardo</h4>
-        <p v-if="pacientes.length > 0">
-            {{ultimoPaciente}}
-        </p>
-
-        <hr>
-        <h4>Paciente do Plano Ouro</h4>
-        <p v-for="p in pacientePlanosOuro">{{ p.nome}}</p>
-
-
-        <h4>Paciente cadastrado</h4>
-        <p v-for="p in pacientes">{{p.nome}}</p>
+    <div id="app">   
+        {{ paciente }}<br>
+        <!--<input type="text" :value="paciente" @keyup="paciente = $event.target.value">-->
+        <input type="text" v-model="paciente">
 
     </div>
     <script>
@@ -36,35 +21,13 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                pacientes:[]
-                
+                paciente: 'joao da Silva'               
             },
             methods:{
-                adiconarPaciente(){
-                    this.pacientes.push(
-                        {
-                            nome: inputNome.value,
-                            idade: inputIdade.value,
-                            plano: inputPlano.value
-                        }
-                    )
-                }
+                
             },
-            computed: {
-                ultimoPaciente(){
-                    let key = this.pacientes.length - 1;
-                    let txt = '';
-
-                    txt += 'Paciente ' + this.pacientes[key].nome;
-                    txt += ', idade ' + this.pacientes[key].idade;
-                    txt += ', plano ' + this.pacientes[key].plano;
-                    
-                    return txt.toUpperCase()
-
-                },
-                pacientePlanosOuro(){
-                    return this.pacientes.filter( item => item.plano == 'Ouro')
-                }
+            computed: {               
+               
             }
         })        
     </script>
