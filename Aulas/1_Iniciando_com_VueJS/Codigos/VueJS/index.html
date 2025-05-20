@@ -8,16 +8,27 @@
     <title>Document</title>    
 </head>
 <body>    
-    <div id="app"> 
-        <template v-if="saudacao">
-            <h1>Boas Vindas</h1>
-            <p>Conteúdo da tag <strong>template</strong></p>
+    <div id="app">     
+        <h4>Adicionar pacientes</h4> 
+        <span>Nome:</span><input type="text" id="inputNome"><br>
+        <span>Idade:</span><input type="text" id="inputIdade"><br>
+        <span>Plano:</span><input type="text" id="inputPlano"><br>
+        <button @click="adiconarPaciente()">Adiconar</button>
+        <hr>
+        <h4>Ultimo paciente cadastardo</h4>
+        <p v-if="pacientes.length > 0">
+            Paciente {{pacientes[pacientes.length - 1].nome}},
+            Idade {{pacientes[pacientes.length - 1].idade}},
+            Plano {{pacientes[pacientes.length - 1].plano}}
+        </p>
 
-        </template> 
-        <template v-for="n in 10">
-            <p> 2x {{n}} = {{2*n}}</p>
-        </template>      
+        <hr>
+        <h4>Paciente do Plano Ouro</h4>
+        <p v-for="p in pacientes">{{ p.plano == 'Ouro' ? p.nome : ''}}</p>
 
+
+        <h4>Paciente cadastrado</h4>
+        <p v-for="p in pacientes">{{p.nome}}</p>
 
     </div>
     <script>
@@ -27,9 +38,20 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                saudacao: true
+                pacientes:[]
+                
             },
-            methods:{}
+            methods:{
+                adiconarPaciente(){
+                    this.pacientes.push(
+                        {
+                            nome: inputNome.value,
+                            idade: inputIdade.value,
+                            plano: inputPlano.value
+                        }
+                    )
+                }
+            }
         })        
     </script>
 </body>
