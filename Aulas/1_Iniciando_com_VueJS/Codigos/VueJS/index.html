@@ -8,32 +8,11 @@
     <title>Document</title>    
 </head>
 <body>    
-    <div id="app">   
-        {{ paciente }}<br>
-        <!--<input type="text" :value="paciente" @keyup="paciente = $event.target.value">-->
-        <input type="text" v-model="paciente">
-        <hr>
-        <input type="radio" value="f" v-model="sexo">Faminino
-        <input type="radio" value="m" v-model="sexo">masculino
-        <br> {{ sexo }}
-        <hr>
-        <select v-model="plano">
-            <option value="" disabled>Selecione um plano</option>
-            <option value="1">Básico 1</option>
-            <option value="2">Básico 2</option>
-            <option value="3">Master</option>
-        </select>
-        <br> {{ plano }}
-        <hr>
-        <input type="checkbox" value="100" v-model="doencas">Asma
-        <input type="checkbox" value="101" v-model="doencas">Diabetes tipo 1
-        <input type="checkbox" value="102" v-model="doencas">Rinite
-        <br> {{ doencas }}
-        <hr>
-        <textarea v-model="diagnostico"></textarea>
-        <br> {{diagnostico}}
-
-
+    <div id="app"> 
+        <span> Paciente:</span> <input type="text" v-model="paciente"><br>
+        <ul>
+            <li v-for="p in lista">{{p.nome}}, {{p.idade}}</li>
+        </ul>
 
     </div>
     <script>
@@ -43,17 +22,24 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                paciente: 'joao da Silva',
-                sexo:  '',
-                plano: '',
-                doencas: [],
-                diagnostico: ''          
+                paciente: '',
+                pacientes: [
+                    {nome: 'Jorge sant', idade: 32},
+                    {nome: 'Joao santos', idade: 45},
+                    {nome: 'Jose auigusto', idade: 18},
+                    {nome: 'Junior silva', idade: 29},
+                    {nome: 'Julho nogueira', idade: 50}
+                ],
+                lista:[]
             },
-            methods:{
-                
-            },
-            computed: {               
-               
+            methods:{},
+            computed: {},
+            watch: {
+                paciente(valorNovo, valorAntigo){
+                    console.log(valorNovo)
+                    this.lista = this.pacientes.filter(p => p.nome.match(valorNovo))
+
+                }
             }
         })        
     </script>
